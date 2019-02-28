@@ -40,9 +40,11 @@ public class LinkedList<E>{
 	public boolean isEmpty() {
 		return size==0;
 	}
-	
-	
-	
+		
+	/*
+	 * Add node
+	 * 6-add() Solution
+	 */
 	public void add(E e,int index) {
 		if(index<0&&index>size) {
 			throw new IllegalArgumentException("索引错误");
@@ -61,15 +63,17 @@ public class LinkedList<E>{
 			size++;
 	}
 	
+	//First add node
 	public void addFirst(E e) {
 		add(e,0);
 	}
 	
+	//Last add node
 	public void addLast(E e) {
 		add(e,size);
 	}
 	
-	//第一题
+	//1-Count() Solution
 	public int Count(LinkedList h,int n) {
 		
 	    int N = 0;
@@ -82,7 +86,7 @@ public class LinkedList<E>{
 		return N;
 	}
 	
-	//第二题
+	//2-GetNth() Solution
 	public E GetNth(LinkedList list,int index) {
 		if(index<0&&index>size) {
 			throw new IllegalArgumentException("索引输入错误");
@@ -99,7 +103,7 @@ public class LinkedList<E>{
 		return null;
 	}
 	
-	//第三题
+	//3-DeleteList() Solution
 	public void DeleteList(LinkedList list) {
 		for(Node cur=dummyHead.next;cur!=null;cur=cur.next ) {
 			free(cur);
@@ -108,26 +112,24 @@ public class LinkedList<E>{
 		
 	}
 	
-	//释放节点
+	//Release node
 	private void free(Node node) {
 		node.e=null;
 		node.next=null;
 	}
 	
-	//第4题
+	//4-pop() Solution
 	public E pop(LinkedList list) {
 		Node cur=dummyHead.next;
 		assert(cur!=null);
 		E headNode=cur.e;
 		dummyHead.next=cur.next;
 		cur.next=null;
-		free(cur);
-		
-		return headNode;
-		
+		free(cur);	
+		return headNode;		
 	}
 	
-	
+	//6-SortedInsert() Solution
 	public void SortedInsert(LinkedList list) {
 		Node cur=dummyHead.next;
 		while(cur!=null) {
@@ -144,18 +146,15 @@ public class LinkedList<E>{
 		j.e=n;
 	}
 	
-	
 	@Override
 	public String toString() {
 		StringBuilder s=new StringBuilder();
-		
 		Node cur=dummyHead.next;		
 		while(cur!=null) {
 			s.append(cur+"-->");
 			cur=cur.next;
 		}
 		s.append("Null");
-
 		return s.toString();		
 	}
 }
