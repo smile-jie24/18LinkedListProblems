@@ -4,11 +4,11 @@ public class ListTest {
 	
 	public static void main(String[] args) {
 		LinkedList list=new LinkedList<Integer>();
-		
+	
 		//形成默认的测试链表
-		for(int i=1;i<4;i++) {
+		for(int i=0;i<4;i++) {
 			list.addFirst(i);
-			System.out.println(list);
+			//System.out.println("insert"+"'"+i+"'"+"success:  "+list);
 		}
 		
 		//1-Count() Test
@@ -56,5 +56,30 @@ public class ListTest {
 		list.add(5,1);
 		System.out.println(list);
 		*/	
+		
+		//6-SortedInsert() Test
+		/*
+		System.out.print("SortedInsert()前的链表：");
+		System.out.println(list);
+		list.SortedInsert(list, list.createNode(22));
+		list.SortedInsert(list, list.createNode(100));
+		list.SortedInsert(list, list.createNode(3));
+		list.SortedInsert(list, list.createNode(0));
+		System.out.print(SortedInsert()后的链表：);
+		System.out.println(list);
+		*/
+		
+		//6-SortedInsert2() Test
+		/*
+		System.out.print("SortedInsert2()前的链表：");
+		System.out.println(list);
+		list.SortedInsert2(list, list.createNode(5));
+		list.SortedInsert2(list, list.createNode(2));
+		list.SortedInsert2(list, list.createNode(0));
+		System.out.print("SortedInsert2()后的链表:");
+		System.out.println(list);
+		*/
+		
+		
 	}
 }

@@ -1,6 +1,6 @@
 package LinkedList;
 
-public class LinkedList<E>{
+public class LinkedList<E extends Comparable<E>>{
 	private class Node{
 		public E e;
 		public Node next;
@@ -33,6 +33,11 @@ public class LinkedList<E>{
 		size=0;
 	}
 	
+	public Node createNode(E e) {
+		Node node=new Node(e);
+		return node;
+	}
+	
 	public int getSize() {
 		return size;
 	}
@@ -43,7 +48,7 @@ public class LinkedList<E>{
 		
 	/*
 	 * Add node
-	 * 6-add() Solution
+	 * 5-add() Solution
 	 */
 	public void add(E e,int index) {
 		if(index<0&&index>size) {
@@ -61,6 +66,12 @@ public class LinkedList<E>{
 
 			//prev.next=new Node(e,prev.next);
 			size++;
+	}
+	
+	
+	private void add2(E e,int index) {
+		
+			
 	}
 	
 	//First add node
@@ -130,20 +141,29 @@ public class LinkedList<E>{
 	}
 	
 	//6-SortedInsert() Solution
-	public void SortedInsert(LinkedList list) {
+	public void SortedInsert(LinkedList list,Node newNode) {
 		Node cur=dummyHead.next;
-		while(cur!=null) {
-			if(((Comparable<E>) cur.e).compareTo(cur.next.e)>0) {
-				swap(list,cur,cur.next);
+		if(cur==null||cur.e.compareTo(newNode.e)<=0) {
+			newNode.next=cur;
+			dummyHead.next=newNode;
+		}else {
+			while(cur!=null&&cur.next.e.compareTo(newNode.e)>0) {
+				cur=cur.next;
 			}
-			cur=cur.next;
+			newNode.next=cur.next;
+			cur.next=newNode;
 		}
 	}
 	
-	private void swap(LinkedList list,Node i,Node j) {
-		E n=i.e;
-		i.e=j.e;
-		j.e=n;
+	//6-SortedInsert()2 Solution
+	public void SortedInsert2(LinkedList list,Node newNode) {
+		Node cur=dummyHead;
+		while(cur!=null&&cur.next.e.compareTo(newNode.e)>0) {
+			cur=cur.next;
+		}
+		newNode.next=cur.next;
+		cur.next=newNode;
+		cur=dummyHead.next;
 	}
 	
 	@Override
@@ -157,4 +177,6 @@ public class LinkedList<E>{
 		s.append("Null");
 		return s.toString();		
 	}
+	
+	
 }
